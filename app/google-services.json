@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "817029785832",
+    "firebase_url": "https://frao-2bd32.firebaseio.com",
+    "project_id": "frao-2bd32",
+    "storage_bucket": "frao-2bd32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817029785832:android:a5be0733a1a65544",
+        "android_client_info": {
+          "package_name": "fr.android.ppe.frap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817029785832-v9v97rfktlss8s4rb9id99dbdffa3bq0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.android.ppe.frap",
+            "certificate_hash": "9a8ef76a61e5fb1ad4c27227a756a12d87916f75"
+          }
+        },
+        {
+          "client_id": "817029785832-nq6p301cffvmqliftf1vsofv6m90vv6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_AkWWRr66QGFjr-twFSEzi-B9Or6sXEU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817029785832-nq6p301cffvmqliftf1vsofv6m90vv6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
