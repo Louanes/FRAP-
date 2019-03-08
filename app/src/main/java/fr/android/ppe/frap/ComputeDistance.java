@@ -1,13 +1,12 @@
 package fr.android.ppe.frap;
 
 import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
-
 import java.text.DecimalFormat;
-
+import java.util.List;
 import static java.lang.Math.asin;
 import fr.android.ppe.frap.Hydrant;
+
 
 public class ComputeDistance {
 
@@ -34,6 +33,13 @@ public class ComputeDistance {
         + " Meter   " + meterInDec);
 
         return Radius * c;
+    }
+
+    public List<Hydrant> getAvailableHydrant()
+    {
+        List<Hydrant> listAvailableHydrant;
+        Hydrant currentHydrant;
+        LatLng inc_loc;
     }
 
 }
