@@ -7,6 +7,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.text.DecimalFormat;
 
 import static java.lang.Math.asin;
+import fr.android.ppe.frap.Hydrant;
 
 public class ComputeDistance {
 
@@ -35,5 +36,4 @@ public class ComputeDistance {
         return Radius * c;
     }
 
-    public List<>
 }

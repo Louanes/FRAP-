@@ -26,7 +26,7 @@ public class Hydrant {
     {
         return latitude;
     }
-    
+
     public double[] Hydrant_position()
     {
         double[] position = new double[2];
