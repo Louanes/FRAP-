@@ -1,5 +1,7 @@
 package fr.android.ppe.frap;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.text.DecimalFormat;
@@ -27,9 +29,11 @@ public class ComputeDistance {
         int kmInDec = Integer.valueOf(newFormat.format(km));
         double meter = valueResult % 1000;
         int meterInDec = Integer.valueOf(newFormat.format(meter));
-        //Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
-        //+ " Meter   " + meterInDec);
+        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
+        + " Meter   " + meterInDec);
 
         return Radius * c;
     }
+
+    public List<>
 }
