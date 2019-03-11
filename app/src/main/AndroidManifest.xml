@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.location.gps" />
 
 
     <application
@@ -19,8 +20,8 @@
         android:theme="@style/AppTheme">
 
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDfqoguVfJuQjwXQwrlCeSxblYga3gR3B0"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB_ICx5Kmob0uwXqCQ2Zj93PAOikD_uglQ"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

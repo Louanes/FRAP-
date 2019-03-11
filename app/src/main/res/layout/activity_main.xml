@@ -16,35 +16,28 @@
         android:contentDescription="@string/logo_pompier"
         app:srcCompat="@drawable/logo_frap" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete"
-        android:layout_width="260dp"
-        android:layout_height="35dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/auto_complete_edittext_border"
-        android:drawableLeft="@drawable/ic_search"
-        android:hint="@string/AutoCompleteText"
-        android:inputType="textLongMessage"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:drawableStart="@drawable/ic_search"
-        android:paddingStart="10dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="290dp"
         android:orientation="vertical">
 
-        <Button
-            android:layout_gravity="center"
-            android:id="@+id/button_maps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/get_map" />
+        <android.support.v7.widget.CardView
+            android:id="@+id/idCardView"
+            android:layout_width="320dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="200dp"
+            android:layout_gravity="center">
+
+            <fragment
+                android:id="@+id/autocomplete_fragment"
+                android:hint="@string/AutoCompleteText"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+
 
     </LinearLayout>
+
 </RelativeLayout>
