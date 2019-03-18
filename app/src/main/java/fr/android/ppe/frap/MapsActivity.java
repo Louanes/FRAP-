@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,8 +18,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
 import com.google.android.gms.location.LocationCallback;
-import android.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,8 +36,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Iterator;
 
 import fr.android.ppe.frap.direction.FetchUrl;
 import fr.android.ppe.frap.direction.TaskLoadedCallback;
@@ -301,6 +300,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                             intent.putExtra("numero_hydrant", numero_hydrant);
                                             intent.putExtra("Pression_statique",p_stat);
                                             intent.putExtra("Pression_dynamique",p_dym);
+
                                             startActivity(intent);
                                         }
                                     }

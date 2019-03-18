@@ -1,12 +1,17 @@
 package fr.android.ppe.frap;
 
+import android.graphics.Color;
 import android.util.Log;
+
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import static java.lang.Math.asin;
 import static java.lang.Math.cbrt;
 import static java.lang.Math.pow;
+import com.google.android.gms.maps.GoogleMap;
 
 import fr.android.ppe.frap.Hydrant;
 
@@ -30,9 +35,11 @@ public class ComputeDistance {
     //Ratio de securite
     private final float ratio_sec=0.9f;
 
-    public void computeHydrantRadius(Hydrant hydrant, int diametre_tuyau)
+    public ComputeDistance(){}
+
+    public void computeHydrantRadius(Hydrant hydrant, int diametre_tuyau, LatLng coord, GoogleMap map)
     {
-        double L_1000, L_1500, L_2000;
+        double L_1000=0, L_1500=0, L_2000=0;
 
         switch (diametre_tuyau)
         {
@@ -60,6 +67,13 @@ public class ComputeDistance {
         }
 
         //Afficher les cercles en fonction des valeurs obtenues
+        CircleOptions circleOptions1000=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_1000).strokeColor(Color.RED).fillColor(Color.TRANSPARENT);
+        CircleOptions circleOptions1500=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_1500).strokeColor(Color.GREEN).fillColor(Color.TRANSPARENT);
+        CircleOptions circleOptions2000=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_2000).strokeColor(Color.YELLOW).fillColor(Color.TRANSPARENT);
+
+        Circle circle1000 = map.addCircle(circleOptions1000);
+        Circle circle1500 = map.addCircle(circleOptions1500);
+        Circle circle2000 = map.addCircle(circleOptions2000);
 
     }
 

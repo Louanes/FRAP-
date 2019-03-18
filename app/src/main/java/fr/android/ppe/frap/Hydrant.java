@@ -4,36 +4,40 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Hydrant {
 
-    private double id;
-    private LatLng coord;
+    private int id;
+    private double lat;
+    private double lng;
     private double pression_static;
     private double pression_dynamic;
 
     public Hydrant() {}
 
-    public Hydrant(double id_hydrant,LatLng coord, double press_stat, double press_dyn)
+    public Hydrant(int _id, double _pression_stat, double _pression_dyn){
+        this.id=_id;
+        this.pression_static=_pression_stat;
+        this.pression_dynamic=_pression_dyn;
+    }
+
+    public Hydrant(int id_hydrant, double _lat, double _lng, double press_stat, double press_dyn)
     {
         this.id=id_hydrant;
-        this.coord=coord;
+        this.lat=_lat;
+        this.lng=_lng;
         this.pression_static=press_stat;
         this.pression_dynamic=press_dyn;
     }
 
-    public double getId()
+    public int getId()
     {return this.id;}
 
-    public void setId(double _id)
+    public void setId(int _id)
     {this.id=_id ;}
 
-    public LatLng getCoord()
-    {
-        return this.coord;
-    }
+    public double getLat(){return lat;}
 
-    public void setCoord(LatLng _coord)
-    {
-        this.coord=_coord;
-    }
+    public void setLat(double _lat){this.lat=_lat;}
+
+    public double getLng(){return this.lng;}
 
     public double getPression_static()
     {return this.pression_static;}
