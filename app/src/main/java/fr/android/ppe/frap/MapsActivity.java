@@ -286,30 +286,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void getDataHydrant(){
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
-            public boolean onMarkerClick(Marker marker) {
+            public boolean onMarkerClick(final Marker marker) {
                 if((!marker.getTitle().equals("My place"))&&(!marker.getTitle().equals(interventionPlace))){
                     myRef.orderByChild("Lieu_lat").equalTo(marker.getPosition().latitude).addValueEventListener(
                             new ValueEventListener() {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
-                                    while (items.hasNext()) {
-                                        DataSnapshot item = items.next();
-                                        String numero_hydrant=item.child("NumeroHydrant").getValue().toString();
-                                        //numero_hydrant= (Long) coordinate.child("NumeroHydrant").getValue();
-                                        Intent intent=new Intent(MapsActivity.this,DataHydrant.class);
-                                        intent.putExtra("numero_hydrant",numero_hydrant);
-                                        //intent.putExtra("latitude",lati);
-                                        //intent.putExtra("longitude",longi);
-                                        startActivity(intent);
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot){
+                                    for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                        if ((double) item.child("Lieu_lng").getValue() == marker.getPosition().longitude) {
+                                            String numero_hydrant = item.child("NumeroHydrant").getValue().toString();
+                                            String p_stat= item.child("Pression_statique").getValue().toString();
+                                            String p_dym= item.child("Pression_dynamique").getValue().toString();
+                                            Intent intent = new Intent(MapsActivity.this, DataHydrant.class);
+                                            intent.putExtra("numero_hydrant", numero_hydrant);
+                                            intent.putExtra("Pression_statique",p_stat);
+                                            intent.putExtra("Pression_dynamique",p_dym);
+                                            startActivity(intent);
+                                        }
                                     }
-
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
                                     Log.w(TAG, "Failed to read value.", databaseError.toException());
-
                                 }
                             }
                     );

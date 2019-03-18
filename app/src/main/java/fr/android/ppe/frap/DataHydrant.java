@@ -22,7 +22,11 @@ public class DataHydrant extends AppCompatActivity {
         //Get data from intent
         Intent intent= getIntent();
         String numero=intent.getStringExtra("numero_hydrant");
+        String p_stat=intent.getStringExtra("Pression_statique");
+        String p_dym=intent.getStringExtra("Pression_dynamique");
 
         numero_hydrant.setText(numero_hydrant.getText().toString()+ numero);
+        pression_stat.setText(String.valueOf(p_stat));
+        pression_dynamique.setText(String.valueOf(p_dym));
     }
 }

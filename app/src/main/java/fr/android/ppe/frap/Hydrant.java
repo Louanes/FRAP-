@@ -1,56 +1,50 @@
 package fr.android.ppe.frap;
 
-public class Hydrant{
+import com.google.android.gms.maps.model.LatLng;
 
-    private double Lieu_lat=0.0;
-    private double Lieu_lng=0.0;
-    private float pstat;
-    private float pdym;
-    private boolean disponible;
+public class Hydrant {
 
-    public Hydrant(){
+    private double id;
+    private LatLng coord;
+    private double pression_static;
+    private double pression_dynamic;
 
+    public Hydrant() {}
+
+    public Hydrant(double id_hydrant,LatLng coord, double press_stat, double press_dyn)
+    {
+        this.id=id_hydrant;
+        this.coord=coord;
+        this.pression_static=press_stat;
+        this.pression_dynamic=press_dyn;
     }
 
-    public Hydrant(double latitude,double longitude){
-        this.Lieu_lat=latitude;
-        this.Lieu_lng=longitude;
+    public double getId()
+    {return this.id;}
+
+    public void setId(double _id)
+    {this.id=_id ;}
+
+    public LatLng getCoord()
+    {
+        return this.coord;
     }
 
-    public Hydrant(double latitude,double longitude,float pstat,float pdym,boolean disponible){
-        this.Lieu_lat=latitude;
-        this.Lieu_lng=longitude;
-        this.pstat=pstat;
-        this.pdym=pdym;
-        this.disponible=disponible;
+    public void setCoord(LatLng _coord)
+    {
+        this.coord=_coord;
     }
 
-    public double getLatitude(){
-        return Lieu_lat;
-    }
+    public double getPression_static()
+    {return this.pression_static;}
 
-    public double getLongitude(){
-        return Lieu_lng;
-    }
+    public void setPression_static(double _pression_static)
+    {this.pression_static=_pression_static;}
 
-    public float getPstat(){
-        return pstat;
-    }
+    public double getPression_dynamic()
+    {return this.pression_dynamic;}
 
-    public float getPdyn(){
-        return pdym;
-    }
-
-    public boolean getDisponible(){
-        return disponible;
-    }
-
-    public void setLatitude(double latitude){
-        this.Lieu_lat=latitude;
-    }
-
-    public void setLongitude(double longitude){
-        this.Lieu_lng=longitude;
-    }
+    public void setPression_dynamic(double _pression_dynamique)
+    {this.pression_dynamic=_pression_dynamique;}
 
 }
