@@ -23,14 +23,14 @@ public class ComputeDistance {
     private final float j_110=0.28f;
 
     //Valeur des débit de référence
-    private final int d_45=250;
-    private final int d_70=500;
-    private final int d_110=1000;
+    private final double d_45=250;
+    private final double d_70=500;
+    private final double d_110=1000;
 
     //Les débits à calculer
-    private final int t_1000=1000;
-    private final int t_1500=1500;
-    private final int t_2000=2000;
+    private final double t_1000=1000;
+    private final double t_1500=1500;
+    private final double t_2000=2000;
 
     //Ratio de securite
     private final float ratio_sec=0.9f;
@@ -67,13 +67,17 @@ public class ComputeDistance {
         }
 
         //Afficher les cercles en fonction des valeurs obtenues
-        CircleOptions circleOptions1000=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_1000).strokeColor(Color.RED).fillColor(Color.TRANSPARENT);
-        CircleOptions circleOptions1500=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_1500).strokeColor(Color.GREEN).fillColor(Color.TRANSPARENT);
-        CircleOptions circleOptions2000=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_2000).strokeColor(Color.YELLOW).fillColor(Color.TRANSPARENT);
+        CircleOptions circleOptions1000=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_1000).strokeColor(Color.RED);
+        CircleOptions circleOptions1500=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_1500).strokeColor(Color.GREEN);
+        CircleOptions circleOptions2000=new CircleOptions().center(new LatLng(coord.latitude,coord.longitude)).radius(L_2000).strokeColor(Color.YELLOW);
 
         Circle circle1000 = map.addCircle(circleOptions1000);
         Circle circle1500 = map.addCircle(circleOptions1500);
         Circle circle2000 = map.addCircle(circleOptions2000);
+
+        System.out.println(L_1000);
+        System.out.println(L_1500);
+        System.out.println(L_2000);
 
     }
 

@@ -66,6 +66,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LatLng myPlace;
     private Polyline currentPolyline;
     private LatLng location;
+    private int diametre;
+    private Hydrant hydrant;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -161,7 +163,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(place).title(interventionPlace));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place,15));
 
-        readFromDatabase();
+        displayHydrant();
         getDataHydrant();
         float results[]=new float[10];
         Location.distanceBetween(latitude,longitude,myLatitude,myLongitude,results);
@@ -169,6 +171,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         String url=getUrl(myPlace,place,"driving");
         new FetchUrl(MapsActivity.this).execute(getUrl(myPlace, place, "driving"), "driving");
+
     }
 
     @SuppressWarnings("MissingPermission")
@@ -248,7 +251,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onProviderDisabled(String provider) {
 
     }
-    private void readFromDatabase(){
+    private void displayHydrant(){
         // Read from the database
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -294,14 +297,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                     for (DataSnapshot item : dataSnapshot.getChildren()) {
                                         if ((double) item.child("Lieu_lng").getValue() == marker.getPosition().longitude) {
                                             String numero_hydrant = item.child("NumeroHydrant").getValue().toString();
-                                            String p_stat= item.child("Pression_statique").getValue().toString();
-                                            String p_dym= item.child("Pression_dynamique").getValue().toString();
+                                            String p_stat= item.child("Pression_statique").getValue().toString().replace(',','.');
+                                            String p_dym= item.child("Pression_dynamique").getValue().toString().replace(',','.');
                                             Intent intent = new Intent(MapsActivity.this, DataHydrant.class);
                                             intent.putExtra("numero_hydrant", numero_hydrant);
                                             intent.putExtra("Pression_statique",p_stat);
                                             intent.putExtra("Pression_dynamique",p_dym);
-
-                                            startActivity(intent);
+                                            intent.putExtra("lat", item.child("Lieu_lat").getValue().toString());
+                                            intent.putExtra("lng", item.child("Lieu_lng").getValue().toString());
+                                            startActivityForResult(intent,1);
                                         }
                                     }
                                 }
@@ -338,6 +342,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (currentPolyline != null)
             currentPolyline.remove();
         currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                //String strEditText = data.getStringExtra("editTextValue");
+                hydrant= new Hydrant(Integer.parseInt(data.getStringExtra("numero")),
+                        Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")),
+                        Double.parseDouble(data.getStringExtra("p_stat")), Double.parseDouble(data.getStringExtra("p_dym")));
+                diametre=Integer.parseInt(data.getStringExtra("diametre"));
+
+                ComputeDistance computeDistance= new ComputeDistance();
+                computeDistance.computeHydrantRadius(hydrant, diametre, new LatLng(hydrant.getLat(),hydrant.getLng()),mMap);
+            }
+        }
     }
 
 
