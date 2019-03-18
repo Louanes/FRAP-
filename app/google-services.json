@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "817029785832-io9pmcbffo61otaita4sdcbtbg4kl4d0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.android.ppe.frap",
+            "certificate_hash": "f90c480e7716bd6a8e501d560e2bba9ae53094e0"
+          }
+        },
+        {
           "client_id": "817029785832-nq6p301cffvmqliftf1vsofv6m90vv6v.apps.googleusercontent.com",
           "client_type": 3
         }
