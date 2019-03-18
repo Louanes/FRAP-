@@ -1,6 +1,6 @@
 package fr.android.ppe.frap;
 
-public class Hydrant {
+public class Hydrant{
 
     private double Lieu_lat=0.0;
     private double Lieu_lng=0.0;

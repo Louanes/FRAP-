@@ -4,4 +4,8 @@
     <string name="AutoCompleteText">Saisissez votre adresse</string>
     <string name="get_map">Get maps</string>
     <string name="logo_pompier">logo_firefighter</string>
+    <string name="normal_map">Normal map</string>
+    <string name="hybrid_map">Hybrid map</string>
+    <string name="satellite_map">Satellite map</string>
+    <string name="terrain_map">Terrain map</string>
 </resources>
